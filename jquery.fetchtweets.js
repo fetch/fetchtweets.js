@@ -93,6 +93,8 @@
                 jtweet += '</div>';
               }
 
+              jtweet += '<p class="fetchtweets-tweet-user"><a href="http://twitter.com/' + item.user.screen_name + '">' + item.user.name + ':</a></p>';
+
               var tweettext = item.text
                 , tweetdate = parseTwitterDate(item.created_at);
 
@@ -103,7 +105,7 @@
               }
 
               jtweet += '<p class="fetchtweets-tweet-text">' + tweettext + '</p>';
-              jtweet += '<a href="http://twitter.com/' + item.from_user + '/statuses/' + item.id_str + '" class="fetchtweets-date">' + tweetdate + '</a>';
+              jtweet += '<a href="http://twitter.com/' + item.user.screen_name + '/statuses/' + item.id_str + '" class="fetchtweets-date">' + tweetdate + '</a>';
 
               jtweet += '</li>';
 
