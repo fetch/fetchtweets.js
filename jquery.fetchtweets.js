@@ -63,11 +63,11 @@
         // Check if there is a search query given, if not fetch user tweets
         var params = {count: options.count}, endpoint, normalize;
         if(options.query) {
-          endpoint = '//fetchtweets.herokuapp.com/api.twitter.com/1.1/search/tweets.json';
+          endpoint = '//api.fetchtweets.com/1.1/search/tweets.json';
           params.q = options.query;
           normalize = function(data){ return data.statuses; };
         } else {
-          endpoint = '//fetchtweets.herokuapp.com/api.twitter.com/1.1/statuses/user_timeline.json';
+          endpoint = '//api.fetchtweets.com/1.1/statuses/user_timeline.json';
           params.screen_name = options.username;
           normalize = function(data){ return data; };
         }
