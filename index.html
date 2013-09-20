@@ -34,6 +34,15 @@
 	#tweets li{
 		padding: 0;
 		margin: 10px 0;
+		*zoom: 1;
+	}
+	#tweets li:before,
+	#tweets li:after{
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+	#tweets li:after{
+		clear: both;
 	}
 	
 	#tweets a{
@@ -42,7 +51,12 @@
 	
 	#tweets .ft-picture{
 		float: left;
-		margin: 0 10px 10px 0;
+		margin: 20px 10px 10px 0;
+	}
+	
+	#tweets .ft-content{
+		display: block;
+		margin-left: 60px;
 	}
 	
 	#tweets .ft-date{

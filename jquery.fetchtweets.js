@@ -26,7 +26,9 @@
     convert_links: true,
     endpoint: 'api.fetchtweets.com',
     loader_text: 'Tweets worden geladen...',
-    no_result: 'Geen recente tweets gevonden'
+    no_result: 'Geen recente tweets gevonden',
+    show_user: true,
+    show_date: true
   };
 
   var browser = function() {
@@ -147,7 +149,10 @@
         tweet += '</div>';
       }
 
-      tweet += '<p class="ft-tweet-user"><a href="http://twitter.com/' + item.user.screen_name + '">' + item.user.name + ':</a></p>';
+      tweet += '<div class="ft-content">';
+      if(this.options.show_user){
+        tweet += '<p class="ft-tweet-user"><a href="http://twitter.com/' + item.user.screen_name + '">' + item.user.name + ':</a></p>';
+      }
 
       var tweettext = item.text
         , tweetdate = this.formatDate(item.created_at);
@@ -157,8 +162,10 @@
       }
 
       tweet += '<p class="ft-tweet-text">' + tweettext + '</p>';
-      tweet += '<a href="http://twitter.com/' + item.user.screen_name + '/statuses/' + item.id_str + '" class="ft-date">' + tweetdate + '</a>';
-
+      if(this.options.show_date){
+        tweet += '<a href="http://twitter.com/' + item.user.screen_name + '/statuses/' + item.id_str + '" class="ft-date">' + tweetdate + '</a>';
+      }
+      tweet += '</div>';
       tweet += '</li>';
       return tweet;
    }
