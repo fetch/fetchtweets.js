@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->	<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>fetchtweets.js</title>
+	<meta name="description" content="">
+
+	<script>
+	// Replace no-js class for js
+	var dc = document.documentElement.className.replace(/(\s|^)no-js(\s|$)/, '$1' + 'js' + '$2');
+	document.documentElement.className = dc;
+	</script>
+
+	<style>
+	body{
+		font-family: Helvetica;
+		font-size: 12px;
+	}
+	
+	#container{
+		width: 800px;
+		margin: 0 auto;
+	}
+	
+	#tweets ul{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	#tweets li{
+		padding: 0;
+		margin: 10px 0;
+	}
+	
+	#tweets a{
+		color: ;
+	}
+	
+	#tweets .ft-picture{
+		float: left;
+		margin: 0 10px 10px 0;
+	}
+	
+	#tweets .ft-date{
+		clear: both;
+		font-size: 10px;
+		color: #CCC;
+	}
+	
+	</style>
+
+</head>
+<body>
+	<!--[if lt IE 7]>
+		<p class="chromeframe"><% 'You are using an outdated browser. <a href="%s">Upgrade your browser today</a> or <a href="%s">install Google Chrome Frame</a> to better experience this site.'|tr:'http://browsehappy.com/':'http://www.google.com/chromeframe/?redirect=true' %></p>
+	<![endif]-->
+	<div id="container">
+			
+		<h1>fetchtweets.js</h1>
+		<div id="tweets"></div>
+	
+	
+		<div class="content">
+			<h3>Register your application at <a href="http://www.fetchtweets.com">fetchtweets.com</a></h3>
+			<p>Implementation is as simple as:</p>
+			<pre>
+				<code>
+&lt;div id="tweets"&gt;&lt;/div&gt;
+&lt;script&gt;
+$(function(){
+  $('#tweets').fetchtweets({
+    key: 'Your application key here'
+  });
+});
+&lt;/script&gt;
+				</code>
+			</pre>
+		</div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="jquery.fetchtweets.js"></script>
+	<script>
+	$(function(){
+		$('#tweets').fetchtweets({
+			key: '52284b7342d36302000001c6'
+		});
+	});
+	</script>
+</body>
+</html>
