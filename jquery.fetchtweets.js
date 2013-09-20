@@ -28,7 +28,8 @@
     loader_text: 'Tweets worden geladen...',
     no_result: 'Geen recente tweets gevonden',
     show_user: true,
-    show_date: true
+    show_date: true,
+    date_formatter: function(date){ return date.toString();}
   };
 
   var browser = function() {
@@ -112,30 +113,17 @@
       return text;
     },
 
-    formatDate: function(dateString) {
+    normalizeDate: function(dateString){
       var date = new Date(dateString);
       if (browser.ie) {
         date = Date.parse(dateString.replace(/( \+)/, ' UTC$1'));
       }
-      var client_date = new Date();
+      return date;
+    },
 
-      var day = date.getDate()
-        , month = date.getMonth() + 1
-        , year = date.getFullYear();
-
-      var diff = Math.floor((client_date - date) / 1000);
-      if (diff <= 1) {return "zojuist";}
-      if (diff < 20) {return diff + " seconden geleden";}
-      if (diff < 40) {return "halve minuut geleden";}
-      if (diff < 60) {return "minder dan een minuut geleden";}
-      if (diff <= 90) {return "een minuut geleden";}
-      if (diff <= 3540) {return Math.round(diff / 60) + " minuten geleden";}
-      if (diff <= 5400) {return "1 uur geleden";}
-      if (diff <= 86400) {return Math.round(diff / 3600) + " uur geleden";}
-      if (diff <= 129600) {return "1 dag geleden";}
-      if (diff < 604800) {return Math.round(diff / 86400) + " dagen geleden";}
-      if (diff <= 777600) {return "1 week geleden";}
-      return "op " + (day + "-" + month + "-" + year);
+    formatDate: function(date) {
+      date = this.normalizeDate(date);
+      return this.options.date_formatter(date);
     },
 
     renderTweet: function(item){

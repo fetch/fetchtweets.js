@@ -20,6 +20,10 @@
 		font-size: 12px;
 	}
 	
+	a{
+		color: #70ADBD;
+	}
+	
 	#container{
 		width: 800px;
 		margin: 0 auto;
@@ -46,7 +50,7 @@
 	}
 	
 	#tweets a{
-		color: ;
+		color: #70ADBD;
 	}
 	
 	#tweets .ft-picture{
@@ -93,14 +97,22 @@ $(function(){
 &lt;/script&gt;
 				</code>
 			</pre>
+			<p>
+				<p><em>Relative time provided by <a href="https://github.com/jherdman">@jherdman</a>'s <a href="https://github.com/jherdman/javascript-relative-time-helpers">javascript-relative-time-helpers</a>.</em></p>
+			</p>
+			<p>&copy; Copyright 2013 <a href="http://fetch.nl">Fetch!</a></p>
 		</div>
 	</div>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="jquery.fetchtweets.js"></script>
+	<script src="date.extensions.js"></script>
 	<script>
 	$(function(){
 		$('#tweets').fetchtweets({
-			key: '52284b7342d36302000001c6'
+			key: '52284b7342d36302000001c6',
+			date_formatter: function(date){
+				return date.toRelativeTime();
+			}
 		});
 	});
 	</script>
